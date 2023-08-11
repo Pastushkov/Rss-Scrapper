@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "ES2021",            // Версія JavaScript
+      "module": "CommonJS",          // Формат модулів
+      "outDir": "./dist",            // Директорія, де зберігатиметься транспільований код
+      "rootDir": "./src",            // Директорія, де розташований вихідний код TypeScript
+      "strict": true,                // Строгий режим перевірки типів
+      "esModuleInterop": true,       // Дозволяє імпортувати CommonJS модулі як ES модулі
+      "skipLibCheck": true           // Пропустити перевірку .d.ts файлів (може зберегти час збірки)
+    }
+  }

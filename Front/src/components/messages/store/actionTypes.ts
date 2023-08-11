@@ -1,0 +1,4 @@
+export enum messageTypes {
+    SET_MESSAGE_TOAST = 'SET_MESSAGE_TOAST',
+    DROP_MESSAGE_TOAST = 'DROP_MESSAGE_TOAST',
+}
