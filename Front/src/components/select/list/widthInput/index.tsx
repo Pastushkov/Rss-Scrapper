@@ -26,17 +26,13 @@ export const CustomOptionsSelectInput: FC<IFormikSelect> = ({
         if (!isOpen)
             setInput(
                 (options as IOption[])?.find(({ value: v }) => value === v) ??
-                    (options as IOption[])?.find(
-                        ({ value: v }) => v === '',
-                    ) ?? {
-                        label: '',
-                        value: '',
-                    },
+                    (options as IOption[])?.find(({ value: v }) => v === '') ??
+                    initialSelect,
             )
     }, [value, options, isOpen])
 
     useEffect(() => {
-        if (!isOpen) setSearch(filteredOptions)
+        setSearch(filteredOptions)
     }, [isOpen])
 
     const handleClick = ({ value: v }: IOption) => {

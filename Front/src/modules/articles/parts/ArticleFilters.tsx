@@ -69,45 +69,56 @@ const ArticleFilters: FC<IProps> = ({ setFilters }) => {
                 }}
             >
                 {props => {
-                    const { values, setFieldValue, handleChange } = props
+                    const { values, setFieldValue, handleChange, submitForm } =
+                        props
                     return (
                         <Form>
                             <FormWrapper>
-                                <CustomInput
-                                    name='search'
-                                    value={values.search}
-                                    placeholder='search'
-                                    onChange={handleChange}
-                                />
+                                <div className='line'>
+                                    <CustomOptionsSelectInput
+                                        value={values.category}
+                                        label='category'
+                                        name='category'
+                                        setFieldValue={(field, value) => {
+                                            setFieldValue(field, value)
+                                            submitForm()
+                                        }}
+                                        options={categoryOptions}
+                                    />
 
-                                <CustomOptionsSelectInput
-                                    value={values.category}
-                                    label='category'
-                                    name='category'
-                                    setFieldValue={(field, value) => {
-                                        setFieldValue(field, value)
-                                    }}
-                                    options={categoryOptions}
-                                />
+                                    <CustomSelect
+                                        label='source'
+                                        name='source'
+                                        options={sourceOptions}
+                                        setFieldValue={(field, value) => {
+                                            setFieldValue(field, value)
+                                            submitForm()
+                                        }}
+                                        emptyField
+                                    />
+                                    <CustomSelect
+                                        label='sort by'
+                                        name='sortBy'
+                                        options={sortoptions}
+                                        setFieldValue={(field, value) => {
+                                            setFieldValue(field, value)
+                                            submitForm()
+                                        }}
+                                        defaultValueFirst
+                                    />
+                                </div>
 
-                                <CustomSelect
-                                    label='source'
-                                    name='source'
-                                    options={sourceOptions}
-                                    setFieldValue={setFieldValue}
-                                    defaultValueFirst
-                                />
-                                <CustomSelect
-                                    label='sort by'
-                                    name='sortBy'
-                                    options={sortoptions}
-                                    setFieldValue={setFieldValue}
-                                    defaultValueFirst
-                                />
-
-                                <ButtonWrapper>
-                                    <Button type='submit'>Search</Button>
-                                </ButtonWrapper>
+                                <div className='line'>
+                                    <CustomInput
+                                        name='search'
+                                        value={values.search}
+                                        placeholder='search'
+                                        onChange={handleChange}
+                                    />
+                                    <ButtonWrapper>
+                                        <Button type='submit'>Search</Button>
+                                    </ButtonWrapper>
+                                </div>
                             </FormWrapper>
                         </Form>
                     )

@@ -15,8 +15,7 @@ Using the application, you can view and manage RSS articles.
 
 For run application clone this repo. Start Front-end Part and Back-end part
 ```
-cd ./Front && npm run start
-cd ./Back && npm run start
+npm run start
 ```
 
 Happy Hacking!

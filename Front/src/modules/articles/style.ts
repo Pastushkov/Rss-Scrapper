@@ -50,11 +50,16 @@ export const Article = styled.div`
     }
 `
 export const FormWrapper = styled.div`
-    display: flex;
-    flex-grow: 1;
+    min-width: 800px;
     width: 100%;
-    align-items: center;
-    gap: 10px;
+    .line {
+        display: flex;
+        max-width: 800px;
+        width: 100%;
+        flex-grow: 1;
+        gap: 10px;
+        align-items: center;
+    }
 `
 export const Panel = styled.div`
     border: 1px solid ${colors.dark_grey};

@@ -177,7 +177,7 @@ router.post('/', check({
     pubDate: Joi.date().required(),
     category: Joi.array().items(Joi.string()).required(),
     source: Joi.string().required(),
-    media: Joi.string().optional(),
+    media: Joi.string().optional().allow(''),
   
   })
 }), authMiddleware, rssController.createArticle)

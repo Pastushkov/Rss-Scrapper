@@ -14,7 +14,7 @@ import {
     SelectWrapperBox,
 } from './style'
 
-const initialSelect = { label: '', value: '' }
+const initialSelect = { label: '-', value: '' }
 
 const CustomSelect: FC<IFormikSelect> = ({
     id,
@@ -23,11 +23,19 @@ const CustomSelect: FC<IFormikSelect> = ({
     value,
     setFieldValue,
     options,
+    emptyField,
     defaultValueFirst,
 }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [defaultValue, setDefaultValue] = useState(initialSelect)
     const [field, meta] = useField(name)
+    const [optionsList, setOptionsList] = useState(options)
+
+    useEffect(() => {
+        if (emptyField) {
+            setOptionsList([initialSelect, ...options])
+        }
+    }, [options, emptyField])
 
     useEffect(() => {
         setDefaultValue(
@@ -35,7 +43,7 @@ const CustomSelect: FC<IFormikSelect> = ({
                 (options as IOption[])?.find(
                     ({ value: v }: any) => v === '',
                 ) ?? {
-                    label: '',
+                    label: '-',
                     value: '',
                 },
         )
@@ -85,7 +93,9 @@ const CustomSelect: FC<IFormikSelect> = ({
                         <SelectArrow fill={colors.grey} />
                     </IconWrapper>
                 </SelectBodyWrapper>
-                {isOpen && <List onChange={handleClick} options={options} />}
+                {isOpen && (
+                    <List onChange={handleClick} options={optionsList} />
+                )}
             </SelectWrapper>
             {meta.error && meta.touched && (
                 <ErrorSelect>{meta.error}</ErrorSelect>
