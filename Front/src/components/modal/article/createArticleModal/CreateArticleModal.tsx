@@ -22,7 +22,6 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
     const handleClose = () => {
         setOpen(false)
     }
-
     const [selectedDate, setSelectedDate] = useState(new Date())
 
     const dispatch = useDispatch()
@@ -50,6 +49,7 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
                     handleClose()
                 }}
                 validationSchema={createArticleSchema}
+                enableReinitialize
             >
                 {props => {
                     const {
