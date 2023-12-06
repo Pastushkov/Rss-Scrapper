@@ -20,8 +20,7 @@ export const createArticleSchema = yup.object().shape({
     pubDate: yup.string().required(),
     category: yup
         .string()
-        .matches(regex.category, errorMessages.category)
-        .required(),
+        .matches(regex.category, errorMessages.category).optional(),
     source: yup.string().required(),
     media: yup.string().url().optional(),
 })

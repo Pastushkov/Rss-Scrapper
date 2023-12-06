@@ -20,5 +20,8 @@ export enum articleTypes {
     FETCH_SOURCE_LIST = 'FETCH_SOURCE_LIST_articleTypes',
     SET_SOURCE_LIST = 'SET_SOURCE_LIST_articleTypes',
 
+    FETCH_UPLOAD_TO_MEDIUM = 'FETCH_UPLOAD_TO_MEDIUM_articleTypes',
+    FETCH_UPLOAD_TO_GHOST = 'FETCH_UPLOAD_TO_GHOST_articleTypes',
+
     DROP_ARTICLES = 'DROP_ARTICLES_articleTypes',
 }

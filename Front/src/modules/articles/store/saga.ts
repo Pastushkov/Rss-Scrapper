@@ -14,6 +14,7 @@ import {
     FetchCreateArticle,
     FetchEditArticleById,
     FetchDeleteArticleyId,
+    FetchUploadToMedium,
 } from './types'
 import {
     createArticle,
@@ -23,6 +24,8 @@ import {
     getArticlesList,
     getCategoryList,
     deleteArticleById,
+    uploadToMedium,
+    uploadToGhost,
 } from '../api/api.articles'
 import { articleTypes } from './actionTypes'
 
@@ -208,6 +211,66 @@ function* fetchEditArticleByIdSaga({ payload }: FetchEditArticleById) {
     }
 }
 
+function* fetchUploadToMediumSaga({ payload }: FetchUploadToMedium) {
+    try { 
+        const response: AxiosResponse = yield call(uploadToMedium, payload)
+        if (response.data) {
+            yield put({
+                type: articleTypes.SET_ARTICLE_BY_ID,
+                payload: response.data.payload,
+            })
+            yield put({
+                type: messageTypes.SET_MESSAGE_TOAST,
+                payload: {
+                    message: 'Article updated',
+                    type: 'success',
+                },
+            })
+        }
+    } catch (e: any) {
+        yield put({
+            type: messageTypes.SET_MESSAGE_TOAST,
+            payload: {
+                message: e?.response?.data?.error.message || 'Error',
+                type: 'error',
+            },
+        })
+        yield put({
+            type: articleTypes.DROP_ARTICLES,
+        })
+    }
+}
+
+function* fetchUploadToGhostSaga({ payload }: FetchUploadToMedium) {
+    try { 
+        const response: AxiosResponse = yield call(uploadToGhost, payload)
+        if (response.data) {
+            yield put({
+                type: articleTypes.SET_ARTICLE_BY_ID,
+                payload: response.data.payload,
+            })
+            yield put({
+                type: messageTypes.SET_MESSAGE_TOAST,
+                payload: {
+                    message: 'Article updated',
+                    type: 'success',
+                },
+            })
+        }
+    } catch (e: any) {
+        yield put({
+            type: messageTypes.SET_MESSAGE_TOAST,
+            payload: {
+                message: e?.response?.data?.error || 'Error',
+                type: 'error',
+            },
+        })
+        yield put({
+            type: articleTypes.DROP_ARTICLES,
+        })
+    }
+}
+
 function* articleSaga(): Generator<
     AllEffect<ForkEffect<never>>,
     void,
@@ -227,7 +290,11 @@ function* articleSaga(): Generator<
             articleTypes.FETCH_EDIT_ARTICLE_BY_ID,
             fetchEditArticleByIdSaga,
         ),
-    ])
+        takeLatest(articleTypes.FETCH_UPLOAD_TO_MEDIUM,
+            fetchUploadToMediumSaga),
+            takeLatest(articleTypes.FETCH_UPLOAD_TO_GHOST,
+                fetchUploadToGhostSaga)
+            ])
 }
 
 export default articleSaga

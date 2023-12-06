@@ -29,7 +29,7 @@ export const CustomModalWrapper = styled.div<{
 export const CustomModalBody = styled.div`
     position: relative;
     width: max-content;
-    min-width: 250px;
+    min-width: 850px;
     padding: 1px;
     padding-right: 20px;
     border: 30px solid ${colors.white};

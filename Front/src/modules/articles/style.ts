@@ -70,7 +70,7 @@ export const Panel = styled.div`
     justify-content: center;
     .icon {
         cursor: pointer;
-        &:hover {
+        &.hover:hover {
             path {
                 fill: ${colors.black};
             }

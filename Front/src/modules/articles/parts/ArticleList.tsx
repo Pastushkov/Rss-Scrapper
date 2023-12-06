@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react'
-import { DeleteIcon, EditIcon, PlusIcon } from 'assets/images/svgs'
+import { DeleteIcon, EditIcon, PlusIcon, ShareIcon } from 'assets/images/svgs'
 import DeleteArticleModal from 'components/modal/article/deleteArticleModal/DeleteArticleModal'
 import CreateArticleModal from 'components/modal/article/createArticleModal/CreateArticleModal'
 import useAccess from 'hooks/useAccess'
 import EditArticleModal from 'components/modal/article/editArticleModal/EditArticleModal'
+import ShareArticleModal from 'components/modal/article/shareArticleModal/ShareArticleModal'
 import { Article, Cover, ListHead, Panel } from '../style'
 import { IArticle } from '../store/types'
 
@@ -20,6 +21,10 @@ const ArticleList: FC<IProps> = ({ list }) => {
     }>({ open: false, id: '' })
     const [openCreateModal, setOpenCreateModal] = useState(false)
     const [openEditModal, setOpenEditModal] = useState<{
+        open: boolean
+        id: string
+    }>({ open: false, id: '' })
+    const [openShareModal, setOpenShareModal] = useState<{
         open: boolean
         id: string
     }>({ open: false, id: '' })
@@ -85,10 +90,10 @@ const ArticleList: FC<IProps> = ({ list }) => {
                                                 id: _id,
                                             })
                                         }
-                                        className='icon'
+                                        className='icon hover'
                                     />
                                     <DeleteIcon
-                                        className='icon'
+                                        className='icon hover'
                                         onClick={() =>
                                             setOpenDeleteModal({
                                                 open: true,
@@ -96,6 +101,12 @@ const ArticleList: FC<IProps> = ({ list }) => {
                                             })
                                         }
                                     />
+                                    <ShareIcon className='icon'  onClick={() =>
+                                            setOpenShareModal({
+                                                open: true,
+                                                id: _id,
+                                            })
+                                        }/>
                                 </Panel>
                             )}
                         </div>
@@ -114,6 +125,11 @@ const ArticleList: FC<IProps> = ({ list }) => {
                     open={openEditModal.open}
                     setOpen={setOpenEditModal}
                     id={openEditModal.id}
+                />
+                <ShareArticleModal
+                    open={openShareModal.open}
+                    id={openShareModal.id}
+                    setOpen={setOpenShareModal}
                 />
             </Cover>
         </div>

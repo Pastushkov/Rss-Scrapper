@@ -147,7 +147,7 @@ export const EditIcon = ({ ...props }) => (
 )
 export const DeleteIcon = ({ ...props }) => (
     <svg
-    {...props}
+        {...props}
         width='28px'
         height='28px'
         viewBox='0 -0.5 21 21'
@@ -173,7 +173,7 @@ export const DeleteIcon = ({ ...props }) => (
                     <path
                         d='M130.35,216 L132.45,216 L132.45,208 L130.35,208 L130.35,216 Z M134.55,216 L136.65,216 L136.65,208 L134.55,208 L134.55,216 Z M128.25,218 L138.75,218 L138.75,206 L128.25,206 L128.25,218 Z M130.35,204 L136.65,204 L136.65,202 L130.35,202 L130.35,204 Z M138.75,204 L138.75,200 L128.25,200 L128.25,204 L123,204 L123,206 L126.15,206 L126.15,220 L140.85,220 L140.85,206 L144,206 L144,204 L138.75,204 Z'
                         id='delete-[#1487]'
-                     />
+                    />
                 </g>
             </g>
         </g>
@@ -181,7 +181,14 @@ export const DeleteIcon = ({ ...props }) => (
 )
 
 export const CloseIcon = ({ ...props }) => (
-    <svg {...props} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+        {...props}
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+    >
         <path
             d='M19.3332 2.54675L17.4532 0.666748L9.99984 8.12008L2.5465 0.666748L0.666504 2.54675L8.11984 10.0001L0.666504 17.4534L2.5465 19.3334L9.99984 11.8801L17.4532 19.3334L19.3332 17.4534L11.8798 10.0001L19.3332 2.54675Z'
             fill='#787A7C'
@@ -190,10 +197,39 @@ export const CloseIcon = ({ ...props }) => (
 )
 
 export const PlusIcon = ({ ...props }) => (
-    <svg {...props} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+        {...props}
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+    >
         <path
             d='M17.5 11.0714H11.0714V17.5H8.92857V11.0714H2.5V8.92857H8.92857V2.5H11.0714V8.92857H17.5V11.0714Z'
             fill='#5D32D5'
         />
+    </svg>
+)
+
+export const ShareIcon = ({ ...props }) => (
+    <svg
+    {...props}
+        xmlns='http://www.w3.org/2000/svg'
+        width='28px'
+        height='28px'
+        viewBox='0 0 24 24'
+        fill='none'
+    >
+        <g id='Communication / Share_iOS_Export'>
+            <path
+                id='Vector'
+                d='M9 6L12 3M12 3L15 6M12 3V13M7.00023 10C6.06835 10 5.60241 10 5.23486 10.1522C4.74481 10.3552 4.35523 10.7448 4.15224 11.2349C4 11.6024 4 12.0681 4 13V17.8C4 18.9201 4 19.4798 4.21799 19.9076C4.40973 20.2839 4.71547 20.5905 5.0918 20.7822C5.5192 21 6.07899 21 7.19691 21H16.8036C17.9215 21 18.4805 21 18.9079 20.7822C19.2842 20.5905 19.5905 20.2839 19.7822 19.9076C20 19.4802 20 18.921 20 17.8031V13C20 12.0681 19.9999 11.6024 19.8477 11.2349C19.6447 10.7448 19.2554 10.3552 18.7654 10.1522C18.3978 10 17.9319 10 17 10'
+                stroke='#000000'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+            />
+        </g>
     </svg>
 )

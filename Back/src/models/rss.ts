@@ -11,6 +11,12 @@ const RssSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  mediumlUrl: {
+    type:String
+  }, 
+  ghostUrl: {
+    type: String
+  }
 });
 
 export default mongoose.model("Rss", RssSchema);

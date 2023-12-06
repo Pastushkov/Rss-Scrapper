@@ -65,7 +65,7 @@ export const CustomModal: FC<{
                     </Label>
                 )}
                 {children}
-            </CustomModalBody>
+            </CustomModalBody>{' '}
         </CustomModalWrapper>
     )
 }

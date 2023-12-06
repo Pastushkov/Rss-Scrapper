@@ -34,9 +34,7 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
         >
             <Formik
                 initialValues={startValues}
-                onSubmit={values => {
-                  
-
+                onSubmit={(values, { resetForm }) => {
                     dispatch(
                         fetchCreateArticleAction({
                             ...values,
@@ -47,6 +45,7 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
                         }),
                     )
                     handleClose()
+                    resetForm()
                 }}
                 validationSchema={createArticleSchema}
                 enableReinitialize
@@ -58,8 +57,8 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
                         dirty,
                         isValid,
                         setFieldValue,
+                        resetForm,
                     } = props
-
                     return (
                         <Form>
                             <Line>
@@ -132,7 +131,14 @@ const CreateArticleModal: FC<IProps> = ({ open, setOpen }) => {
                                 >
                                     Create
                                 </Button>
-                                <Button onClick={handleClose}>Cancle</Button>
+                                <Button
+                                    onClick={() => {
+                                        handleClose()
+                                        resetForm()
+                                    }}
+                                >
+                                    Cancle
+                                </Button>
                             </ButtonWrapper>
                         </Form>
                     )

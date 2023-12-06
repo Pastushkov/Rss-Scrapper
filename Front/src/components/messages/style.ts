@@ -14,5 +14,5 @@ export const Toast = styled.div<{ type: 'error' | 'success' | '' }>`
     font-size: 16px;
     gap: 5px;
     cursor: pointer;
-    z-index: 999999;
+    z-index: 999999999;
 `
