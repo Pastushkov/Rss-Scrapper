@@ -28,7 +28,7 @@ const shareToMedium = async (req: Request, res: Response) => {
     title: article.title,
     contentFormat: "html",
     content: `<h1>${article.title}</h1> ${
-      article.media && `<br/> <img src='${article.media}'/>`
+      article.media ? `<br/> <img src='${article.media}'/>` : ""
     } <br/>  ${article.description} <br/> <br/> link: ${article.link}`,
     publishStatus: "public",
     tags: article.category,
@@ -47,17 +47,17 @@ const shareToMedium = async (req: Request, res: Response) => {
         },
       }
     );
-  } catch (e:any) {
-    error = e.response.data.errors[0]
+  } catch (e: any) {
+    error = e.response.data.errors[0];
     response = null;
   }
 
-  if (!response){ 
+  if (!response) {
     return res.status(400).json({
-      status:false,
-      payload:null,
-      error
-    })
+      status: false,
+      payload: null,
+      error,
+    });
   }
 
   article = null;
@@ -119,9 +119,9 @@ const shareToGhost = async (req: Request, res: Response) => {
     posts: [
       {
         title: article.title,
-        tags: article.category,
+        tags: article.category ?? "",
         html: `<h1>${article.title}</h1> ${
-          article.media && `<br/> <img src='${article.media}'/>`
+          article.media ? `<br/> <img src='${article.media}'/>` : ""
         } <br/>  ${article.description} <br/> <br/> link: ${article.link}`,
         status: "published",
       },
