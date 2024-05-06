@@ -8,15 +8,24 @@ import path from "path";
 import startupQueue from "./functions/cronJobs";
 import rssRequests from "./functions/rssRequsts";
 
-import allRoutes from './routes'
+import allRoutes from "./routes";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-eval'"],
+      "style-src": null,
+    },
+  })
+);
+console.log(path.join(__dirname, "../doc/assets"));
 
-app.use(express.static(__dirname));
+app.use("/assets", express.static(path.join(__dirname, "../doc/assets")));
 
 app.use("/", allRoutes);
 

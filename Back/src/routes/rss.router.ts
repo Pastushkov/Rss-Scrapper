@@ -234,6 +234,34 @@ router.patch('/:_id', check({
 }), authMiddleware, rssController.updateArticleById)
 
 
+/**
+ * @api {delete} /article/:_id Delete Article by id
+ * @apiVersion 1.0.0
+ * @apiName DeleteArticle
+ * @apiGroup Article
+ *
+ * @apiParam {String} _id Article id
+ *
+ * @apiSuccess {json} object object with payload
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *      status: true,
+ *      payload: {
+ *          id: /article id/
+ *      }
+ *      error: null,
+ * }
+ *
+ * @apiError {json} object object with error
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *      status: false,
+ *      payload: null,
+ *      error: "Error message"
+ *      }
+ */
 router.delete('/:_id',authMiddleware,rssController.deleteArticleById)
 
 export default router;
